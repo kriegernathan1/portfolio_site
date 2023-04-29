@@ -1,0 +1,11 @@
+---
+export interface Props {
+    label: string
+    className?: string
+}
+
+const { label, className } = Astro.props
+---
+<button class:list={['', className]}>
+
+</button>

@@ -1,0 +1,11 @@
+---
+export interface Props {
+    label: string
+    className?: string
+}
+
+const { label, className } = Astro.props
+---
+<button class="text-accent-green px-3 py-3 border-2 font-bold max-w-[200px] border-accent-green">
+    {label}
+</button>
