@@ -1,0 +1,80 @@
+
+---
+export interface Props {
+	isShown: boolean
+}
+
+import Button from "./Button.astro"
+import { Icon } from 'astro-icon'
+---
+<nav class="z-10 right-4 top-6 bg-transparent">
+    <div class="w-24 md:hidden absolute right-0 top-8 z-20">
+        <button id="hamburger-btn" class="">
+            <!-- Hamburger menu icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14"/></svg>
+        </button>
+
+        <button id="close-btn" class="hidden">
+            <!-- Close btn: 'X' -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="white" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"/></svg>
+        </button>
+    </div>
+
+    <div id="nav-links" class="hidden text-white gap-4 p-4 md:flex flex-col md:flex-row md:gap-8 md:bg-transparent bg-gray-900">
+        <a href="" class="hover:text-accent-green transition duration-500 ease-in-out">
+            Home
+        </a>
+        <a href="" class="hover:text-accent-green">
+            About
+        </a>
+        <a href="" class="hover:text-accent-green">
+            Background
+        </a>
+        <a href="" class="hover:text-accent-green">
+            Portfolio
+        </a>
+    </div>
+</nav>
+
+<script>
+    const hamburgerBtn: HTMLElement | null = document.getElementById('hamburger-btn');
+    const navLinksContainer = (document.getElementById('nav-links') as HTMLElement)
+
+    hamburgerBtn?.setAttribute("isMenuOpen", "closed")
+
+    const closeBtn: HTMLElement | null = document.getElementById('close-btn')
+
+    const openMobileMenu = () => {
+        navLinksContainer.classList.remove('hidden');
+        navLinksContainer.classList.add('flex');
+
+        hamburgerBtn?.setAttribute("isMenuOpen", "open");
+        hamburgerBtn?.classList.add('hidden')
+
+        closeBtn?.classList.remove('hidden')
+    }
+
+    const closeMobileMenu = () => {
+        navLinksContainer.classList.remove('flex');
+        navLinksContainer.classList.add('hidden');
+
+        hamburgerBtn?.setAttribute("isMenuOpen", "closed");
+        hamburgerBtn?.classList.remove('hidden');
+        hamburgerBtn?.classList.add('block')
+
+        closeBtn?.classList.add('hidden')
+    }
+
+    if(hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            openMobileMenu()
+        })        
+    }
+
+    if(closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            closeMobileMenu()
+        })
+    }
+
+</script>
