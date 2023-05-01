@@ -33,7 +33,7 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
 
     .slide-from-left {
         position: relative;
-        left: -100vw;
+        transform: translateX(150%);
 
         animation:
             slide-from-left 1.5s forwards;
@@ -42,10 +42,10 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
 
     @keyframes slide-from-left {
         from {
-            left: -100vw
+            transform: translateX(-150%); 
         } 
         to {
-            left: 0;
+            transform: translateX(0);
         }
     }
 
