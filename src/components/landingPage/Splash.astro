@@ -4,19 +4,81 @@ import { Icon } from 'astro-icon'
 
 const introMessage = "I am a Full Stack Web Developer. I provide services that span from simple single page static websites to fully interactive web apps with powerful APIs."
 ---
+<style>
+    .typewriter{
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: 2px solid orange; /* The typwriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        
+        animation: 
+            typing 1.5s steps(40, end),
+            blink-caret .55s step-end infinite forwards;
+    }
+
+    .typewriter::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* The typing effect */
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 350px;}
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white}
+    }
+
+    .slide-from-left {
+        position: relative;
+        left: -100vw;
+
+        animation:
+            slide-from-left 1.5s forwards;
+        animation-delay: 1.5s;
+    }
+
+    @keyframes slide-from-left {
+        from {
+            left: -100vw
+        } 
+        to {
+            left: 0;
+        }
+    }
+
+    .fizzle-in {
+        opacity: 0;
+        animation: fizzle-in 1s forwards;
+        animation-delay: 2s;
+    }
+
+    @keyframes fizzle-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 100;
+        }
+    }
+</style>
+
+
 <section class="relative w-screen h-screen bg-black z-0 overflow-hidden">
     <img src={backgroundCode} class="opacity-50 h-screen w-screen absolute  object-cover z-10"/>
     <!-- <Branding/> -->
 
     <div class="absolute w-screen h-screen flex flex-col justify-center items-center gap-10 z-12">
 
-        <div class="relative z-20  w-full pl-4 pr-4 lg:w-4/6 space-y-5">
-            <h1 class="text-4xl leading-none font-bold text-accent-green bolder z-10 text-[42px]">Hey, I'm Nathan</h1>
+        <div class="relative z-20  w-full pl-4 pr-4 lg:w-4/6 space-y-5 flex flex-col">
+            <h1 class="text-5xl h-14 leading-none font-bold text-accent-green bolder z-10 typewriter w-fit">Hey, I'm Nathan</h1>
     
-            <p class="text-white font-semibold text-3xl">{introMessage}</p>
+            <p class="text-white font-semibold text-3xl slide-from-left">{introMessage}</p>
         </div>
 
-        <div class="flex gap-3 w-18  h-auto z-40">
+        <div class="flex gap-3 w-18  h-auto z-40 fizzle-in">
             <a href="https://www.linkedin.com/in/nathan-k-79012a53/" target="_blank">
                 <Icon name="line-md:linkedin" class="text-white opacity-50 hover:opacity-90 w-10 h-10"/>
             </a>
