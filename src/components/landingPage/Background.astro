@@ -1,0 +1,41 @@
+---
+import SectionHeading from "../shared/SectionHeading.astro";
+import BackgroundCard, { Props as BackgroundItems} from "../shared/BackgroundCard.astro";
+ 
+const backgroundItems: BackgroundItems[] = [
+    {
+        techIcons: ["Angular",'Typescript', 'Sass'],
+        role: "Software Developer",
+        organization: "Macquarie",
+        timeline: "May 2022 - Present",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et hic fuga quas voluptates quo magni quibusdam ratione est asperiores dolorum doloremque necessitatibus nulla natus commodi, consequuntur nobis voluptatum nostrum?"
+    },
+    {
+        techIcons: ["React",'Typescript', 'Tailwind'],
+        role: "Software Developer",
+        organization: "BrightInsight",
+        timeline: "January 2022 - October 2022",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et hic fuga quas voluptates quo magni quibusdam ratione est asperiores dolorum doloremque necessitatibus nulla natus commodi, consequuntur nobis voluptatum nostrum?"
+    },
+    // {
+    //     techIcons: ["React",'Typescript', 'Tailwind'],
+    //     role: "Software Developer",
+    //     organization: "Macquarie",
+    //     timeline: "June 2022 - Present",
+    //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et hic fuga quas voluptates quo magni quibusdam ratione est asperiores dolorum doloremque necessitatibus nulla natus commodi, consequuntur nobis voluptatum nostrum?"
+    // }
+]
+
+---
+
+<section class="w-full bg-transparent pb-8 flex flex-col items-center">
+    <SectionHeading text="Background" />
+
+    <!-- card container -->
+    <div class="pt-12 flex justify-center items-center flex-col xl:flex-row xl:w-4/6 gap-8">
+       {backgroundItems.map((item) => {
+           return <BackgroundCard {...item}   />
+       })}
+    </div>
+    
+</section>

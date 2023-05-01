@@ -1,0 +1,48 @@
+---
+import Icon, {SupportedIcons} from "../Icons/Icon.astro";
+export interface Props {
+    techIcons: SupportedIcons[]
+    role: string
+    organization: string
+    timeline: string
+    description: string
+}
+
+const { techIcons, role, organization, timeline, description } = Astro.props
+---
+
+<div class="w-5/6 md:w-3/4  p-2 pl-4 pr-4 max-w-lg rounded-3xl bg-[#202020]">
+
+    <!-- Image -->
+    <div class="col-span-5 text-white flex justify-center items-start">
+    </div>
+
+    <!-- info -->
+    <div class="col-span-7 text-white flex justify-center flex-col gap-3 p-4">
+
+        <div class="flex justify-center items-center gap-4">
+            {techIcons.map((iconName: any) => {
+                return <Icon width={40} height={40} name={iconName} />
+            })}
+        </div>
+        
+        <div class="flex flex-col items-center gap-1">
+            <h1 class="text-xl text-center md:text-2xl font-bold">
+                {role}
+            </h1>
+
+            <h1 class="text-white opacity-60 text-xl font-bold">
+                {organization}
+            </h1>
+
+            <span class="text-white opacity-30 text-sm text-center">
+                {timeline}
+            </span>
+
+            <p class="pl-2 pr-2 mt-4 min-h-[150px]">
+                {description}
+            </p>
+        </div>
+    </div>
+
+</div>

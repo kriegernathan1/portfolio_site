@@ -1,0 +1,24 @@
+---
+import AngularIcon from "../Icons/AngularIcon.astro";
+import TypescriptIcon from "../Icons/TypescriptIcon.astro";
+import SassIcon from "../Icons/SassIcon.astro";
+import ReactIcon from "../Icons/ReactIcon.astro";
+import TailwindIcon from "./TailwindIcon.astro";
+
+interface Props {
+    name: SupportedIcons
+    width: number
+    height: number
+};
+
+export type SupportedIcons = 'Angular' | 'Sass' | 'Typescript' | 'React' | 'Tailwind'
+
+const { width, height, name } = Astro.props
+const passedProps = {width, height}
+---
+
+{name === "Angular" && <AngularIcon {...passedProps} />}
+{name === "Sass" && <SassIcon {...passedProps} />}
+{name === "Typescript" && <TypescriptIcon {...passedProps} />}
+{name === "React" && <ReactIcon {...passedProps} />}
+{name === "Tailwind" && <TailwindIcon {...passedProps} />}
