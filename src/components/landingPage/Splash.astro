@@ -80,18 +80,22 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
     const introductionBlockTextElement = document.getElementById('intro-block-text') as HTMLElement
     const socialMediaContainerElement =  document.getElementById('social-media-container') as HTMLElement
 
-
-    backgroundImageElement.addEventListener('load', () => {
+    const onImageLoaded = () => {
         spinnerIconElement.remove()
-
+    
         introductionHeaderElement.classList.remove('hidden')
         introductionHeaderElement.classList.add('typewriter')
-
+    
         introductionBlockTextElement.classList.add('slide-from-left')
-
+    
         socialMediaContainerElement.classList.add('fizzle-in')
         socialMediaContainerElement.classList.remove('hidden')
-    })
+    }
+
+    if(backgroundImageElement.complete) onImageLoaded()
+    else {
+        backgroundImageElement.addEventListener('load', onImageLoaded)
+    }
     
     
 </script>
