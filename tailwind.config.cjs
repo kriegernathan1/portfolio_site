@@ -6,10 +6,10 @@ module.exports = {
       colors: {
         "accent-green": "#08FDD8",
       },
+      screens: {
+        'xsm': '365px'
+      }
     },
-    screens: {
-      'xsm': '365px'
-    }
   },
   plugins: [],
 };
