@@ -7,6 +7,9 @@ module.exports = {
         "accent-green": "#08FDD8",
       },
     },
+    screens: {
+      'xsm': '365px'
+    }
   },
   plugins: [],
 };
