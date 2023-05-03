@@ -87,6 +87,7 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
         introductionHeaderElement.classList.add('typewriter')
     
         introductionBlockTextElement.classList.add('slide-from-left')
+        introductionBlockTextElement.classList.remove('hidden')
     
         socialMediaContainerElement.classList.add('fizzle-in')
         socialMediaContainerElement.classList.remove('hidden')
@@ -100,14 +101,14 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
 <section class="relative w-screen h-screen bg-black z-0 overflow-hidden">
     <BlocksShuffle id="spinner-icon" classes="fill-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
 
-    <img id="splash-bg-img" src={backgroundCode} class="opacity-50 h-screen w-screen absolute  object-cover z-10"/>
+    <img alt="" id="splash-bg-img" src={backgroundCode} class="opacity-50 h-screen w-screen absolute  object-cover z-10"/>
 
     <div class="absolute w-screen h-screen flex flex-col justify-center items-center gap-10 z-12">
 
         <div class="relative z-20  w-full pl-4 pr-4 lg:w-4/6 space-y-5 flex flex-col">
             <h1 id="intro-text" class="hidden text-4xl h-10 xsm:text-5xl xsm:h-14 leading-none font-bold text-accent-green bolder z-10 w-fit">Hey, I'm Nathan</h1>
     
-            <p id="intro-block-text" class="text-white font-semibold text-2xl xsm:text-3xl -translate-x-[150vw]">{introMessage}</p>
+            <p id="intro-block-text" class="hidden text-white font-semibold text-2xl xsm:text-3xl -translate-x-[150vw]">{introMessage}</p>
         </div>
 
         <div id="social-media-container" class="hidden flex gap-3 w-18  h-auto z-40">
