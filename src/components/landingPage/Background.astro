@@ -33,7 +33,7 @@ const backgroundItems: BackgroundItems[] = [
     <SectionHeading id={BACKGROUND_SECTION_ID} text="Background" />
 
     <!-- card container -->
-    <div class="pt-12 flex justify-center items-stretch flex-col xl:flex-row xl:w-4/6 gap-8">
+    <div class="pt-12 flex justify-center items-center xl:items-stretch flex-col xl:flex-row xl:w-4/6 gap-8">
        {backgroundItems.map((item) => {
            return <BackgroundCard {...item}   />
        })}
