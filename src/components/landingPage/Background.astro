@@ -9,14 +9,14 @@ const backgroundItems: BackgroundItems[] = [
         role: "Software Developer",
         organization: "Macquarie",
         timeline: "May 2022 - Present",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et hic fuga quas voluptates quo magni quibusdam ratione est asperiores dolorum doloremque necessitatibus nulla natus commodi, consequuntur nobis voluptatum nostrum?"
+        description: "Needing an update of their trading software's UI, a team of 5 other developers and myself were tasked with rewriting their frontend application from Angular 1.0 to Angular 14. With the adoption of Angular, updated best practices, and several optimizations, realised performance increased 100% and bug tickets decreased 50%"
     },
     {
         techIcons: ["React",'Typescript', 'Tailwind'],
         role: "Software Developer",
         organization: "BrightInsight",
         timeline: "January 2022 - October 2022",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et hic fuga quas voluptates quo magni quibusdam ratione est asperiores dolorum doloremque necessitatibus nulla natus commodi, consequuntur nobis voluptatum nostrum?"
+        description: "Pre-MVP a team of 6 developers and myself were tasked with developing a disease management dashboard. The dashboard provided heathcare workers a suite of tools to assist in patient care. Additonally, the dashboard would support multiple tenants and their individual configuration needs. The product was delivered by the MVP deadlines and as a result additional funding was secured by BrightInsight."
     },
     // {
     //     techIcons: ["React",'Typescript', 'Tailwind'],
@@ -33,7 +33,7 @@ const backgroundItems: BackgroundItems[] = [
     <SectionHeading id={BACKGROUND_SECTION_ID} text="Background" />
 
     <!-- card container -->
-    <div class="pt-12 flex justify-center items-center flex-col xl:flex-row xl:w-4/6 gap-8">
+    <div class="pt-12 flex justify-center items-stretch flex-col xl:flex-row xl:w-4/6 gap-8">
        {backgroundItems.map((item) => {
            return <BackgroundCard {...item}   />
        })}
