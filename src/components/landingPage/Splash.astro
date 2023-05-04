@@ -1,5 +1,7 @@
 ---
-import backgroundCode from "../../assets/code_background.jpg"
+import backgroundCodeDefault from "../../assets/code_background.webp"
+import backgroundCodeMobile from "../../assets/code_background-mobile.webp"
+import backgroundCodeDesktop from "../../assets/code_background-desktop.webp"
 import { Icon } from 'astro-icon'
 import BlocksShuffle from "../shared/Animations/BlocksShuffle.astro";
 
@@ -10,6 +12,7 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
         overflow: hidden; /* Ensures the content is not revealed until the animation */
         border-right: 2px solid white; /* The typwriter cursor */
         white-space: nowrap; /* Keeps the content on a single line */
+        will-change: transform;
         
         animation: 
             typing 1.5s steps(40, end) forwards,
@@ -42,6 +45,7 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
     .slide-from-left {
         position: relative;
         transform: translateX(150%);
+        will-change: transform;
 
         animation:
             slide-from-left 1.5s forwards;
@@ -61,6 +65,7 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
         opacity: 0;
         animation: fizzle-in 1s forwards;
         animation-delay: 2.5s;
+        will-change: opacity;
     }
 
     @keyframes fizzle-in {
@@ -100,8 +105,13 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
 
 <section class="relative w-screen h-screen bg-black z-0 overflow-hidden">
     <BlocksShuffle id="spinner-icon" classes="fill-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+    
+    <picture>
+        <source media="(min-width: 768px)" srcset={backgroundCodeDesktop}>
+        <source media="(max-width: 767px)" srcset={backgroundCodeMobile}>
 
-    <img alt="" id="splash-bg-img" src={backgroundCode} class="opacity-50 h-screen w-screen absolute  object-cover z-10"/>
+        <img aria-label="background of code on computer screen" role="img" alt="code on computer screen" id="splash-bg-img" src={backgroundCodeDefault} class="opacity-50 h-screen w-screen absolute  object-cover z-10"/>
+    </picture>
 
     <div class="absolute w-screen h-screen flex flex-col justify-center items-center gap-10 z-12">
 
@@ -112,15 +122,15 @@ const introMessage = "I am a Full Stack Web Developer. I provide services that s
         </div>
 
         <div id="social-media-container" class="hidden flex gap-3 w-18  h-auto z-40">
-            <a href="https://www.linkedin.com/in/nathan-k-79012a53/" target="_blank">
+            <a href="https://www.linkedin.com/in/nathan-k-79012a53/" target="_blank" aria-label="LinkedIn profile">
                 <Icon name="line-md:linkedin" class="text-white opacity-50 hover:opacity-90 w-10 h-10"/>
             </a>
             
-            <a href="https://github.com/kriegernathan1" target="_blank">
+            <a href="https://github.com/kriegernathan1" target="_blank" aria-label="Github profile">
                 <Icon name="ri:github-fill" class="text-white opacity-50 hover:opacity-90 w-10 h-10"/>
             </a>
             
-            <a href="mailto: me@nathankrieger.dev" target="_blank">
+            <a href="mailto: me@nathankrieger.dev" target="_blank" aria-label="Contact Email">
                 <Icon name="tabler:mail" class="text-white opacity-50 hover:opacity-90 w-10 h-10"/>
             </a>
         </div>

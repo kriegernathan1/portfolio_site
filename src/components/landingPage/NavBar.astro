@@ -6,33 +6,34 @@ export interface Props {
 
 import Button from "./Button.astro"
 import { Icon } from 'astro-icon'
+import { BACKGROUND_SECTION_ID } from "./Background.astro"
 ---
 <nav class="z-10 right-4 top-6 md:absolute bg-transparent">
     <div class="md:hidden absolute right-4 top-8 z-20">
-        <button id="hamburger-btn" class="">
+        <button id="hamburger-btn" class="" role="button" aria-label="Expand Navigation">
             <!-- Hamburger menu icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14"/></svg>
         </button>
 
-        <button id="close-btn" class="hidden">
+        <button id="close-btn" class="hidden" aria-label="Collapse Navigation">
             <!-- Close btn: 'X' -->
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="white" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"/></svg>
         </button>
     </div>
 
     <div id="nav-links" class="hidden text-lg text-white gap-4 p-4 md:flex flex-col md:flex-row md:gap-8 md:bg-transparent bg-gray-900">
-        <a href="" class="hover:text-accent-green transition duration-500 ease-in-out">
+        <a href="/" role="link" class="hover:text-accent-green transition duration-500 ease-in-out">
             Home
         </a>
-        <a href="#about-section" class="hover:text-accent-green">
+        <a href="#about-section" role="link" class="hover:text-accent-green">
             About
         </a>
-        <a href="" class="hover:text-accent-green">
+        <a href={`#${BACKGROUND_SECTION_ID}`} role="link" class="hover:text-accent-green">
             Background
         </a>
-        <a href="" class="hover:text-accent-green">
+        <!-- <a href="" role="link" class="hover:text-accent-green">
             Portfolio
-        </a>
+        </a> -->
     </div>
 </nav>
 

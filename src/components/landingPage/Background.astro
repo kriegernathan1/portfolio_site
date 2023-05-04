@@ -2,6 +2,7 @@
 import SectionHeading from "../shared/SectionHeading.astro";
 import BackgroundCard, { Props as BackgroundItems} from "../shared/BackgroundCard.astro";
  
+export const BACKGROUND_SECTION_ID = "background-section"
 const backgroundItems: BackgroundItems[] = [
     {
         techIcons: ["Angular",'Typescript', 'Sass'],
@@ -29,7 +30,7 @@ const backgroundItems: BackgroundItems[] = [
 ---
 
 <section class="w-full bg-transparent pb-8 flex flex-col items-center">
-    <SectionHeading text="Background" />
+    <SectionHeading id={BACKGROUND_SECTION_ID} text="Background" />
 
     <!-- card container -->
     <div class="pt-12 flex justify-center items-center flex-col xl:flex-row xl:w-4/6 gap-8">
