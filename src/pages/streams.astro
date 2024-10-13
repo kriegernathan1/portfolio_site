@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Streams</title>
+    <title>Document</title>
     <head>
       <script
         type="text/javascript"
@@ -22,39 +22,48 @@
           height: 25px;
           width: 250px;
           border: 1px black;
-          padding: 2px;
-        }
-
-        input[type="submit"] {
-            background: white;
-            padding: 2px;
-            margin-left: 4px;
-            border-radius: 4px;
         }
 
         .hide {
           display: none;
         }
+
+        #link-list > * {
+          list-style: none;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          background-color: transparent;
+          color: white;
+          border: none;
+        }
+
+        #player {
+          width: 100vw;
+        }
       </style>
     </head>
   </head>
   <body>
-    <input type="text" placeholder="video link" />
-    <input type="submit" value="Set link" />
+    <div id="default-input">
+      <input type="text" placeholder="video link" />
+      <input type="submit" value="Set link" />
+    </div>
+
+    <div class="enhanced-choices" id="enhanced">
+      <li id="link-list"></li>
+    </div>
     <div id="player"></div>
     <script defer>
       const submit = document.querySelector('input[type="submit"]');
       const input = document.querySelector('input[type="text"]');
 
-      submit.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        input.classList.add("hide");
-        submit.classList.add("hide");
+      function createPlayer(source) {
         var player = new Clappr.Player({
-          source: input.value,
+          source: source,
           parentId: "#player",
-          autoPlay: true,
+          autoPlay: false,
           poster: "",
           plugins: [],
 
@@ -84,7 +93,55 @@
             },
           },
         });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "m") {
+            document.querySelectorAll(".drawer-icon")[0].click();
+          }
+        });
+      }
+
+      submit.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        input.classList.add("hide");
+        submit.classList.add("hide");
+        createPlayer(input.value);
       });
+
+      async function getLinks() {
+        const req = await fetch(
+          "https://eflpexiiio6evbidxisiz7c44u0pwpdd.lambda-url.us-west-1.on.aws/"
+        );
+        const results = await req.json();
+
+        // Create a <ul> element
+        const ul = document.createElement("ul");
+
+        // Iterate over the JSON object
+        for (const [key, value] of Object.entries(results)) {
+          // Create a <li> element
+          const btn = document.createElement("button");
+
+          btn.addEventListener("click", () => {
+            createPlayer(btn.value);
+            document.getElementById("enhanced").classList.add("hide");
+          });
+
+          // Set the text content
+          btn.textContent = `${key}`;
+          btn.value = value;
+          // Append the <li> to the <ul>
+          ul.appendChild(btn);
+        }
+
+        // Append the <ul> to the body or a specific element
+        document.getElementById("link-list").appendChild(ul);
+
+        document.getElementById("default-input").classList.add("hide");
+      }
+
+      getLinks();
     </script>
   </body>
 </html>
