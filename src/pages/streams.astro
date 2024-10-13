@@ -1,3 +1,50 @@
+<style>
+  html {
+    background: black;
+    display: grid;
+    place-items: center;
+  }
+  
+  #default-input {
+    width: 100vw;
+  }
+
+
+  .hide {
+    display: none;
+  }
+
+  #link-list > * {
+    list-style: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
+
+  #player {
+    width: 90vw;
+    display: flex;
+    align-items: center;
+  }
+
+  button, input[type='submit'] {
+    background: transparent;
+    border: 1px solid white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+  }
+
+  button:hover, input[type='submit']:hover {
+    transform: translateY(-2px);
+  }
+  /* bg-transparent border pl-1 pr-1 text-white */
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,52 +56,22 @@
         type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"
       ></script>
-      <style>
-        html {
-          background: black!important;
-          display: grid!important;
-          place-items: center!important;
-        }
-
-        input[type="text"] {
-          margin-top: 50px!important;
-          background: white!important;
-          height: 25px!important;
-          width: 250px!important;
-          border: 1px black!important;
-        }
-
-        .hide {
-          display: none!important;
-        }
-
-        #link-list > * {
-          list-style: none!important;
-          color: white!important!important;
-          display: flex!important!;
-          flex-direction: column!important;
-          gap: 2px!important;
-          background-color: transparent!important;
-          color: white!important;
-          border: none!important;
-        }
-
-        #player {
-          width: 100vw!important;
-        }
-      </style>
     </head>
   </head>
   <body>
-    <div id="default-input">
-      <input type="text" placeholder="video link" />
-      <input type="submit" value="Set link" />
+    <div id="default-input" class="w-screen justify-center items-center flex justify-items-center gap-2 mt-12">
+      <input type="text" placeholder="video link" class="pl-2" />
+      <input type="submit" value="Set link" class="bg-slate-300 h-full pl-1 pr-1"/>
+      <button id="getLinks" class="text-cyan-400">Get Links</button>
     </div>
 
-    <div class="enhanced-choices" id="enhanced">
-      <li id="link-list"></li>
+    <div class="enhanced-choices mt-12" id="enhanced">
+      <ul id="link-list" class="flex flex-col gap-2 items-center justify-center"></ul>
     </div>
     <div id="player"></div>
+
+
+
     <script defer>
       const submit = document.querySelector('input[type="submit"]');
       const input = document.querySelector('input[type="text"]');
@@ -116,7 +133,7 @@
         const results = await req.json();
 
         // Create a <ul> element
-        const ul = document.createElement("ul");
+        const ul = document.getElementById("link-list")
 
         // Iterate over the JSON object
         for (const [key, value] of Object.entries(results)) {
@@ -127,6 +144,8 @@
             createPlayer(btn.value);
             document.getElementById("enhanced").classList.add("hide");
           });
+
+          btn.className = "bg-transparent border pl-1 pr-1 text-white"
 
           // Set the text content
           btn.textContent = `${key}`;
@@ -141,7 +160,7 @@
         document.getElementById("default-input").classList.add("hide");
       }
 
-      getLinks();
+      document.getElementById("getLinks").addEventListener("click", () => getLinks())
     </script>
   </body>
 </html>
